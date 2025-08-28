@@ -1,0 +1,111 @@
+{
+    "nav": {
+        "title": "Digital Singapore Project",
+        "links": [
+            {
+                "name": "Home",
+                "url": "index.html",
+                "active": true
+            },
+            {
+                "name": "Digital Revolution",
+                "url": "section1.html",
+                "active": false
+            },
+            {
+                "name": "Smart Nation",
+                "url": "section2.html",
+                "active": false
+            }
+        ]
+    },
+    "hero": {
+        "title": "Why I Chose Singapore",
+        "subtitle": "Singapore is a global leader in digital governance, infrastructure, and inclusion. Its comprehensive policies, accessibility initiatives, and innovative approaches make it a prime case study for understanding successful digital transformation."
+    },
+    "sections": [
+        {
+            "id": "digital-governance",
+            "title": "Digital Governance & Policies",
+            "paragraphs": [
+                {
+                    "text": "Singapore's Digital Governance & Policies are anchored in a commitment to user-centricity, inclusivity, and continuous improvement. The Digital Government Blueprint outlines a vision for a government that is digital to the core, and serves with heart, emphasizing the integration of technology to enhance service delivery and citizen engagement . To support this, the Digital Service Standards (DSS) provide guidelines for developing accessible, relevant, and seamless digital services, ensuring that all citizens, including those with disabilities, can interact with government platforms effectively . Tools like Oobee assist agencies in assessing and improving the accessibility of their digital services, while workshops and forums engage the community to gather feedback and refine these standards . Additionally, the Ministry of Digital Development and Information (MDDI) collaborates with industry leaders to enhance digital literacy and foster an inclusive digital society, empowering citizens of all ages to confidently participate in the digital world .",
+                    "citations": [
+                        {
+                            "name": "go.gov.sg",
+                            "url": "https://file.go.gov.sg/digitalgovernmentblueprint.pdf"
+                        },
+                        {
+                            "name": "developer.tech.gov",
+                            "url": "https://www.developer.tech.gov.sg/guidelines/standards-and-best-practices/digital-service-standards.html"
+                        },
+                        {
+                            "name": "tech.gov",
+                            "url": "https://www.tech.gov.sg/technews/building-an-accessible-smart-nation-inclusive-design-in-singapore-digital-services"
+                        },
+                        {
+                            "name": "OpenGovAsia Report",
+                            "url": "https://opengovasia.com/singapore-building-an-inclusive-and-empowered-digital-society/"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "infrastructure",
+            "title": "Infrastructure Advantages",
+            "paragraphs": [
+                {
+                    "text": "Singapore's small size and dense digital infrastructure enable rapid broadband, 5G, and data center deployment, supporting over 1,000 MW of capacity. Government initiatives like the Digital Connectivity Blueprint further enhance connectivity, making the city-state a leading hub for Asia's digital economy.",
+                    "citations": [
+                        {
+                            "name": "engineering.fb",
+                            "url": "https://engineering.fb.com/2019/01/14/data-center-engineering/singapore-data-center/ "
+                        },
+                        {
+                            "name": "therobertsonopus",
+                            "url": "https://the-robertson-opus.com.sg/singapore-surpasses-1000-mw-data-centre-capacity/"
+                        },
+                        {
+                            "name": "trade.gov",
+                            "url": "https://www.trade.gov/market-intelligence/singapore-digital-economy "
+                        }
+                    ]
+                },
+                {
+                    "text": "Singapore is a leading regional data center hub, hosting over 90 facilities with 1.4 GW capacity, making it the third-largest global market. The city-state supports cloud, AI, and digital services while promoting sustainability through the Green Data Centre Roadmap, which adds capacity and encourages green energy and efficient cooling technologies.",
+                    "citations": [
+                        {
+                            "name": "DataCenter Knowledge",
+                            "url": "https://www.datacenterknowledge.com/data-center-site-selection/singapore-data-centers-pocket-sized-powerhouse-primed-for-growth"
+                        },
+                        {
+                            "name": "edb.gov",
+                            "url": "https://www.edb.gov.sg/en/our-industries/data-centers.html"
+                        },
+                        {
+                            "name": "smc.co",
+                            "url": "https://smc.co/future-state/singapore-s-strategy-the-green-data-centre-roadmap"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "innovation",
+            "title": "Innovation & Smart City Integration",
+            "paragraphs": [
+                {
+                    "text": "Singapore's Smart Nation, launched in 2014, has deployed 1.2 million IoT sensors by 2025 to optimize traffic, energy, safety, and healthcare, achieving a 15% reduction in commuting times and 12% lower energy use. Powered by edge computing, 5G/LPWAN networks, and AI analytics, the initiative overcomes cybersecurity, privacy, and cost challenges, showcasing a model for efficient, safe, and sustainable smart cities.",
+                    "citation": {
+                        "name": "IoT Smart Cities",
+                        "url": "https://blog.oslo418.com/articles/iot-smart-cities-singapore-2025"
+                    }
+                }
+            ]
+        }
+    ],
+    "footer": {
+        "text": "© 2025 Singapore Smart Nation Project"
+    }
+}
