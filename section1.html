@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Revolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --sg-red: #ef233c;
+            --timeline-border: #2c3e50;
+        }
+
+        .sg-card {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #fee2e2;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, .08);
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        /* Timeline visuals */
+        .timeline-box {
+            border: 2px solid var(--timeline-border);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .15)
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative
+        }
+
+        .timeline-content {
+            max-width: 45%
+        }
+
+        .timeline-left {
+            margin-right: 2.5rem
+        }
+
+        .timeline-right {
+            margin-left: 2.5rem
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <!-- NAV -->
+    <nav id="nav" class="bg-[var(--sg-red)] text-white p-4 shadow-md relative z-50"></nav>
+
+    <!-- Header -->
+    <header class="bg-[var(--sg-red)] text-white p-6 shadow-lg">
+        <div class="max-w-6xl mx-auto">
+            <h1 id="main-title" class="text-3xl font-extrabold tracking-tight"></h1>
+            <p id="main-subtitle" class="mt-2 text-lg opacity-95"></p>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main id="main" class="max-w-6xl mx-auto p-4 sm:p-6 space-y-12"></main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-center p-6 text-sm text-gray-600">@Digital Singapore Project</footer>
+
+    <!-- Validator -->
+    <script src="validator.js"></script>
+    <script>
+        /* ---------------- schema for telecom.json ---------------- */
+        const citationObj = {
+            type: 'object', required: ['url'], properties: {
+                url: { type: 'string' }, text: { type: 'string', optional: true }, name: { type: 'string', optional: true }
+            }
+        };
+        const simpleChartSchema = {
+            type: 'object', required: ['labels'],
+            properties: { labels: { type: 'array' }, data: { type: 'array', optional: true }, label: { type: 'string', optional: true }, sources: { type: 'array', items: citationObj } }
+        };
+        const telecomSchema = {
+            type: 'object', required: ['nav', 'hero'],
+            properties: {
+                nav: {
+                    type: 'object', required: ['title', 'links'], properties: {
+                        title: { type: 'string' },
+                        links: {
+                            type: 'array', items: {
+                                type: 'object', required: ['name', 'url'], properties: {
+                                    name: { type: 'string' }, url: { type: 'string' }, active: { type: 'boolean', optional: true }
+                                }
+                            }
+                        }
+                    }
+                },
+                hero: {
+                    type: 'object', required: ['title', 'subtitle'], properties: {
+                        title: { type: 'string' }, subtitle: { type: 'string' }
+                    }
+                },
+                timeline: {
+                    type: 'array', optional: true, items: {
+                        type: 'object', required: ['title'], properties: {
+                            date: { type: 'string', optional: true }, year: { type: 'string', optional: true }, title: { type: 'string' },
+                            description: { type: 'string', optional: true }, image: { type: 'string', optional: true },
+                            sources: { type: 'array', optional: true, items: citationObj }
+                        }
+                    }
+                },
+                tech_evolution_intro: {
+                    type: 'object', optional: true, properties: {
+                        paragraph: { type: 'string', optional: true }, citation: citationObj
+                    }
+                },
+                tech_cards: {
+                    type: 'array', optional: true, items: {
+                        type: 'object', required: ['title', 'width_percent'], properties: {
+                            title: { type: 'string' }, width_percent: { type: 'number' }, speed: { type: 'string', optional: true }
+                        }
+                    }
+                },
+                charts: { type: 'object', optional: true, properties: { investmentChart: simpleChartSchema, affordabilityChart: simpleChartSchema } },
+                investment_intro: { type: 'object', optional: true, properties: { paragraph: { type: 'string', optional: true } } },
+                mobile_plans_evolution: {
+                    type: 'object', optional: true, properties: {
+                        title: { type: 'string', optional: true }, paragraph: { type: 'string', optional: true },
+                        eras: {
+                            type: 'array', optional: true, items: {
+                                type: 'object', properties: {
+                                    era: { type: 'string' }, plans: { type: 'string' }, price_range: { type: 'string' }, characteristics: { type: 'string' }
+                                }
+                            }
+                        },
+                        sources: { type: 'array', optional: true, items: citationObj }
+                    }
+                },
+                affordability_analysis: {
+                    type: 'object', optional: true, properties: {
+                        title: { type: 'string', optional: true }, paragraph: { type: 'string', optional: true },
+                        key_findings: { type: 'array', optional: true, items: { type: 'string' } },
+                        sources: { type: 'array', optional: true, items: citationObj }
+                    }
+                }
+            }
+        };
+
+        /* ---------------- helpers ---------------- */
+        function renderNav(navData) {
+            const nav = document.getElementById('nav');
+            nav.innerHTML = `
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+          <a href="index.html" class="font-bold text-xl">${navData.title}</a>
+          <button id="menu-btn" class="sm:hidden p-2 rounded focus:outline-none" aria-expanded="false" aria-controls="menu" aria-label="Toggle menu">☰</button>
+          <ul id="menu" class="hidden sm:flex gap-6 absolute sm:static top-full left-0 right-0 bg-[var(--sg-red)] sm:bg-transparent flex-col sm:flex-row p-4 sm:p-0 shadow-md sm:shadow-none">
+            ${navData.links.map(l => `<li><a href="${l.url}" class="block py-2 sm:py-0 ${l.active ? 'underline' : 'hover:underline'}">${l.name}</a></li>`).join('')}
+          </ul>
+        </div>`;
+            const btn = nav.querySelector('#menu-btn');
+            const menu = nav.querySelector('#menu');
+            btn?.addEventListener('click', () => {
+                const expanded = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', String(!expanded));
+                menu.classList.toggle('hidden');
+            });
+            menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+                if (window.innerWidth < 640) { menu.classList.add('hidden'); btn?.setAttribute('aria-expanded', 'false'); }
+            }));
+        }
+
+        // render a list of sources (accepts {text|name,url})
+        function srcLinks(arr) {
+            return (arr || [])
+                .map(s => {
+                    const label = (s && (s.text || s.name)) ? (s.text || s.name) : 'source';
+                    const url = s && s.url ? s.url : '#';
+                    return `<a class="underline" target="_blank" rel="noopener" href="${url}">${label}</a>`;
+                })
+                .join(' • ');
+        }
+
+        // robust chart creator: coerces numbers, clamps lengths, sets default type
+        function makeSimpleChart(canvasId, chartObj, fallbackLabel, defaultType = 'line') {
+            const el = document.getElementById(canvasId);
+            if (!el || !chartObj) return;
+
+            const labels = (chartObj.labels || []).map(x => String(x));
+            const values = (chartObj.data || []).map(Number);
+            const n = Math.min(labels.length, values.length);
+
+            new Chart(el.getContext('2d'), {
+                type: defaultType,
+                data: {
+                    labels: labels.slice(0, n),
+                    datasets: [{
+                        label: chartObj.label || fallbackLabel || 'Series',
+                        data: values.slice(0, n),
+                        borderColor: '#ef233c',
+                        backgroundColor: 'rgba(239,35,60,.25)',
+                        fill: true,
+                        tension: .25,
+                        pointRadius: 3
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
+
+        /* ---------------- validate & render ---------------- */
+        JSONValidator.validateAndRender({
+            url: 'telecom.json',
+            schema: telecomSchema,
+            mountOnErrorId: 'main',
+            render: (data) => {
+                // NAV + HEADER
+                renderNav(data.nav);
+                document.getElementById('main-title').textContent = data.hero.title;
+                document.getElementById('main-subtitle').textContent = data.hero.subtitle;
+
+                const main = document.getElementById('main');
+
+                /* ------- Timeline (zig-zag), optional ------- */
+                const timeline = Array.isArray(data.timeline) ? data.timeline : [];
+                if (timeline.length) {
+                    const timelineSection = document.createElement('section');
+                    timelineSection.className = "relative bg-white py-12 sg-card";
+                    timelineSection.innerHTML = `
+            <h3 class="text-2xl font-semibold text-[var(--sg-red)] text-center mb-8">Timeline</h3>
+            <div class="relative w-full mx-auto">
+              <div class="absolute left-1/2 top-0 transform -translate-x-1/2 h-full border-l-2 border-[var(--sg-red)]"></div>
+            </div>`;
+                    main.appendChild(timelineSection);
+
+                    const container = timelineSection.querySelector('div.relative');
+                    timeline.forEach((event, i) => {
+                        const side = i % 2 === 0 ? 'left' : 'right';
+                        const item = document.createElement('div');
+                        item.className = "timeline-item mb-10 w-full flex justify-between items-center relative";
+                        item.innerHTML = `
+              <div class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-[var(--sg-red)] z-10"></div>
+              <div class="timeline-content timeline-${side} max-w-md bg-white p-6 rounded-xl timeline-box ${side === 'left' ? 'mr-auto timeline-left' : 'ml-auto timeline-right'}">
+                <h4 class="font-semibold text-lg">${(event.date || event.year || '')} ${event.title ? '— ' + event.title : ''}</h4>
+                ${event.description ? `<p class="text-gray-700 mb-2">${event.description}</p>` : ''}
+                ${event.image ? `<img src="${event.image}" class="w-full h-auto object-contain rounded-lg mb-2" alt="${event.title || ''}">` : ''}
+                ${(event.sources && event.sources.length) ? `<p class="text-gray-500 text-xs">Sources: ${srcLinks(event.sources)}</p>` : ''}
+              </div>`;
+                        container.appendChild(item);
+                    });
+                }
+
+                /* ------- Technology Evolution ------- */
+                if (data.tech_evolution_intro || (data.tech_cards && data.tech_cards.length)) {
+                    const tech = document.createElement('section');
+                    tech.className = 'sg-card';
+                    tech.innerHTML = `<h3 class="text-2xl font-semibold text-[var(--sg-red)] mb-4">Technology Evolution</h3>`;
+
+                    if (data.tech_evolution_intro?.paragraph) {
+                        const cite = data.tech_evolution_intro.citation
+                            ? ` <span class="text-xs text-gray-500">Source: <a class="underline" target="_blank" rel="noopener" href="${data.tech_evolution_intro.citation.url}">${data.tech_evolution_intro.citation.text || data.tech_evolution_intro.citation.name || 'source'}</a></span>`
+                            : '';
+                        tech.innerHTML += `<p class="text-gray-700 mb-4">${data.tech_evolution_intro.paragraph}${cite}</p>`;
+                    }
+
+                    (data.tech_cards || []).forEach(card => {
+                        tech.innerHTML += `
+              <div class="mb-3">
+                <p class="font-medium">${card.title}${card.speed ? ` — ${card.speed}` : ''}</p>
+                <div class="bg-gray-200 h-3 rounded-full">
+                  <div class="bg-[var(--sg-red)] h-3 rounded-full" style="width:${card.width_percent || 0}%"></div>
+                </div>
+              </div>`;
+                    });
+
+                    main.appendChild(tech);
+                }
+
+                /* ------- Investment Chart ------- */
+                const invest = data.charts?.investmentChart;
+                if (invest?.labels) {
+                    const sec = document.createElement('section');
+                    sec.className = 'sg-card';
+                    sec.innerHTML = `
+            <h3 class="text-2xl font-semibold text-[var(--sg-red)] mb-4">Infrastructure Investment</h3>
+            ${data.investment_intro?.paragraph ? `<p class="text-gray-700 mb-4">${data.investment_intro.paragraph}</p>` : ''}
+            <div class="w-full overflow-x-auto"><canvas id="investmentChart" class="w-full max-w-[900px] min-w-[320px] mb-2"></canvas></div>
+            ${Array.isArray(invest.sources) && invest.sources.length ? `<p class="text-xs text-gray-600">Sources: ${srcLinks(invest.sources)}</p>` : ''}`;
+                    main.appendChild(sec);
+                    makeSimpleChart('investmentChart', invest, invest.label || 'Investment', 'bar');
+                }
+
+                /* ------- Mobile Plans Evolution (table) ------- */
+                const mpe = data.mobile_plans_evolution;
+                if (mpe?.eras?.length) {
+                    const sec = document.createElement('section');
+                    sec.className = 'sg-card';
+                    let html = `
+            <h3 class="text-2xl font-semibold text-[var(--sg-red)] mb-4">${mpe.title || 'Evolution of Mobile Plans'}</h3>
+            ${mpe.paragraph ? `<p class="text-gray-700 mb-6">${mpe.paragraph}</p>` : ''}
+            <div class="overflow-auto rounded-xl border mb-3">
+              <table class="w-full text-sm min-w-[700px]">
+                <thead class="bg-gray-100">
+                  <tr>
+                    <th class="text-left p-3 font-medium">Era</th>
+                    <th class="text-left p-3 font-medium">Plan Characteristics</th>
+                    <th class="text-left p-3 font-medium">Price Range</th>
+                    <th class="text-left p-3 font-medium">Key Features</th>
+                  </tr>
+                </thead>
+                <tbody>`;
+                    mpe.eras.forEach(era => {
+                        html += `
+              <tr class="border-t">
+                <td class="p-3 font-medium">${era.era || ''}</td>
+                <td class="p-3">${era.plans || ''}</td>
+                <td class="p-3">${era.price_range || ''}</td>
+                <td class="p-3 text-gray-600">${era.characteristics || ''}</td>
+              </tr>`;
+                    });
+                    html += `</tbody></table></div>
+          ${Array.isArray(mpe.sources) && mpe.sources.length ? `<p class="text-xs text-gray-600">Sources: ${srcLinks(mpe.sources)}</p>` : ''}`;
+                    sec.innerHTML = html;
+                    main.appendChild(sec);
+                }
+
+                /* ------- Affordability Analysis + Chart ------- */
+                const aff = data.affordability_analysis;
+                const affChart = data.charts?.affordabilityChart;
+                if (aff || affChart) {
+                    const sec = document.createElement('section');
+                    sec.className = 'sg-card';
+                    sec.innerHTML = `
+            <h3 class="text-2xl font-semibold text-[var(--sg-red)] mb-4">${aff?.title || 'Affordability of Mobile Services'}</h3>
+            ${aff?.paragraph ? `<p class="text-gray-700 mb-4">${aff.paragraph}</p>` : ''}
+            <div class="grid md:grid-cols-2 gap-6 mb-2">
+              <div>
+                ${Array.isArray(aff?.key_findings) ? `
+                  <h4 class="font-semibold text-lg mb-3">Key Findings</h4>
+                  <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    ${aff.key_findings.map(f => `<li>${f}</li>`).join('')}
+                  </ul>` : ''}
+              </div>
+              <div class="w-full overflow-x-auto">
+                <canvas id="affordabilityChart" class="w-full max-w-[900px] min-w-[320px]" height="200"></canvas>
+              </div>
+            </div>
+            ${Array.isArray(aff?.sources) && aff.sources.length ? `<p class="text-xs text-gray-600">Sources: ${srcLinks(aff.sources)}</p>` : ''}`;
+                    main.appendChild(sec);
+
+                    if (affChart?.labels) {
+                        // coerce & clamp
+                        const labels = (affChart.labels || []).map(String);
+                        const values = (affChart.data || []).map(Number);
+                        const n = Math.min(labels.length, values.length);
+                        new Chart(document.getElementById('affordabilityChart').getContext('2d'), {
+                            type: 'line',
+                            data: {
+                                labels: labels.slice(0, n),
+                                datasets: [{
+                                    label: affChart.label || 'Affordability',
+                                    data: values.slice(0, n),
+                                    borderColor: '#ef233c', backgroundColor: 'rgba(239,35,60,.2)', fill: true, tension: .25, pointRadius: 3
+                                }]
+                            },
+                            options: { responsive: true, scales: { y: { beginAtZero: true, ticks: { callback: v => v + '%' } } } }
+                        });
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

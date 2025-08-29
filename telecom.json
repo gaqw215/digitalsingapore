@@ -1,0 +1,288 @@
+{
+    "nav": {
+        "title": "Digital Singapore Project",
+        "links": [
+            {
+                "name": "Home",
+                "url": "index.html",
+                "active": false
+            },
+            {
+                "name": "Digital Revolution",
+                "url": "section1.html",
+                "active": true
+            },
+            {
+                "name": "Smart Nation",
+                "url": "section2.html",
+                "active": false
+            }
+        ]
+    },
+    "hero": {
+        "title": "Singapore's Digital Evolution",
+        "subtitle": "From Dial-Up Dreams to 5G Reality: A Journey Through Singapore's Telecommunications Revolution"
+    },
+    "tech_evolution_intro": {
+        "paragraph": "Singapore's digital infrastructure underwent remarkable transformation in the 2010s, building upon earlier initiatives to become a truly connected nation. The Next Generation Nationwide Broadband Network (NGNBN) provided widespread fiber optic access, while 4G LTE mobile networks offered unprecedented wireless speeds. This period also saw the expansion of Wireless@SG hotspots and the emergence of smartphone ubiquity, setting the stage for Singapore's Smart Nation initiative that would leverage this robust digital foundation to transform how citizens live, work, and play through technology integration.",
+        "citation": {
+            "text": "Supercharging Singapore: 2010 and Beyond",
+            "url": "https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2015/10/35-years-of-ict/supercharging-singapore/2010-and-beyond.html"
+        }
+    },
+    "investment_intro": {
+        "paragraph": "Singapore has made substantial investments in its telecommunications infrastructure across different technological generations. In the late 1990s, the government seeded the Singapore ONE broadband project with about S$200 million. In the 3G era, each operator paid around S$100 million for a 3G licence and committed additional hundreds of millions in network rollout (e.g., major equipment deals and booked 3G capex). The fibre-based NGNBN (2008–2010) was supported by up to S$1 billion in government grants (S$750M for NetCo and S$250M for OpCo). Most recently, for 5G, IMDA supported trials (~S$40M), industry adoption (~S$30M), and R&D via Future Communications programmes (~S$70M), while operators invested in nationwide standalone networks.",
+        "sources": [
+            {
+                "text": "IDA Annual Report 2000 — Singapore ONE",
+                "url": "https://www.imda.gov.sg/-/media/imda/files/regulation-licensing-and-consultations/consultations/consultation-papers/ida-annual-report-2000.pdf"
+            },
+            {
+                "text": "IMDA — NGNBN (grants up to S$1B)",
+                "url": "https://www.imda.gov.sg/how-we-can-help/infrastructure-development/next-generation-nationwide-broadband-network"
+            },
+            {
+                "text": "IMDA — 5G rollout & funding (trials/adoption/R&D)",
+                "url": "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2020/singapore-forges-ahead-with-nationwide-5g-rollout"
+            }
+        ]
+    },
+    "mobile_plans_evolution": {
+        "title": "Evolution of Mobile Plans",
+        "paragraph": "Singapore's mobile plans have evolved dramatically from per-minute billing in the 1990s to today's unlimited data offerings. The early 2000s saw the introduction of bundled plans with SMS packages, while the smartphone revolution around 2008-2010 shifted focus to data allowances. The 4G era (2012+) introduced tiered data plans with 2-12GB options, and today's 5G plans offer unlimited data with speed-based tiers. This evolution reflects both technological advancement and changing consumer usage patterns, from voice-centric to data-dominated mobile experiences.",
+        "eras": [
+            {
+                "era": "1990s (2G)",
+                "plans": "Per-minute billing (S$0.10-0.20/min), no data included",
+                "price_range": "S$20-50/month",
+                "characteristics": "Voice-centric, peak/off-peak rates, high roaming costs",
+                "income_percentage": "—"
+            },
+            {
+                "era": "Early 2000s (2.5G-3G)",
+                "plans": "Bundled minutes + SMS packages, limited data (5-20MB)",
+                "price_range": "S$30-80/month",
+                "characteristics": "Introduction of data services, WAP browsing, MMS capabilities",
+                "income_percentage": "—"
+            },
+            {
+                "era": "2008-2011 (3G/3.5G)",
+                "plans": "Smartphone plans with 1-5GB data, unlimited SMS",
+                "price_range": "S$40-100/month",
+                "characteristics": "iPhone-driven data demand, app usage",
+                "income_percentage": "—"
+            },
+            {
+                "era": "2012-2018 (4G LTE)",
+                "plans": "Tiered data plans (2-12GB), unlimited calls/SMS",
+                "price_range": "S$40-200/month",
+                "characteristics": "Data-centric plans, tethering allowed",
+                "income_percentage": "—"
+            },
+            {
+                "era": "2019-Present (4G+/5G)",
+                "plans": "Unlimited data plans, speed-based tiers, family bundles",
+                "price_range": "S$20-100/month",
+                "characteristics": "5G speeds, entertainment bundles",
+                "income_percentage": "—"
+            }
+        ],
+        "sources": [
+            {
+                "text": "Apple SG — iPhone 3G launch (2008)",
+                "url": "https://www.apple.com/sg/newsroom/2008/06/09SingTel-and-Apple-to-Bring-iPhone-3G-to-Singapore/"
+            },
+            {
+                "text": "HardwareZone — Singtel launches first 4G for smartphones (2012)",
+                "url": "https://www.hardwarezone.com.sg/mobile/telco/tech-news-singtel-launches-singapores-first-4g-service-smartphones-revises-existing-mobile-plans"
+            },
+            {
+                "text": "The Straits Times",
+                "url": "https://www.straitstimes.com/life/singapores-mobile-data-price-war-you-lose-out-if-you-dont-switch"
+            }
+        ]
+    },
+    "affordability_analysis": {
+        "title": "Increasing Affordability of Mobile Services",
+        "paragraph": "Mobile services in Singapore have become highly affordable by international standards. Using the ITU’s mobile basket metric (voice + data), affordability improved to around 0.16–0.19% of monthly GNI per capita by 2024 — far below the ITU’s 2% affordability threshold. Competitive SIM-only and MVNO offerings also helped support very high mobile penetration (~165% in 2024, reflecting multiple lines/devices per person).",
+        "key_findings": [
+            "Mobile penetration increased from 65% (2000) to ~165% (2024)",
+            "Mobile basket affordability ≈0.16–0.19% of monthly GNI p.c. (2024, ITU)",
+            "ITU global affordability benchmark: 2% of GNI p.c.",
+            "SIM-only plans commonly from ~S$20/month"
+        ],
+        "sources": [
+            {
+                "text": "ITU DataHub — ICT Price Baskets",
+                "url": "https://datahub.itu.int/indicator/mobile-basket-price/"
+            },
+            {
+                "text": "IMDA — Telecom Statistics (penetration)",
+                "url": "https://www.imda.gov.sg/resources/telecom-statistics"
+            }
+        ]
+    },
+    "timeline": [
+        {
+            "date": "1999",
+            "title": "Singapore ONE Launch",
+            "description": "Singapore launches one of the world’s first nationwide broadband infrastructures, aiming for ‘One Network for Everyone’. The project was seeded with ~S$200 million in government funding to catalyse early broadband access and services.",
+            "image": "assets/singaporeONE.png",
+            "sources": [
+                {
+                    "name": "The Straits Times",
+                    "url": "https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2015/10/35-years-of-ict/supercharging-singapore/the-1990s.html"
+                },
+                {
+                    "name": "IDA Annual Report 2000 — Singapore ONE (~S$200M)",
+                    "url": "https://www.imda.gov.sg/-/media/imda/files/regulation-licensing-and-consultations/consultations/consultation-papers/ida-annual-report-2000.pdf"
+                }
+            ]
+        },
+        {
+            "date": "2003",
+            "title": "Broadband Market Leadership",
+            "description": "StarHub’s MaxOnline hits 102,000 subscribers (1.5 Mbps unlimited), taking >50% of residential broadband. Cable’s early growth marks the shift from dial-up to always-on access and primes the market for high-speed services.",
+            "image": "assets/starhub.png",
+            "sources": [
+                {
+                    "name": "StarHub",
+                    "url": "https://corporate.starhub.com/about-us/newsroom/2003/january/15012003_starhubmaintainstopspotinresidentialbroadbandinternetaccess.html"
+                },
+                {
+                    "name": "The Straits Times",
+                    "url": "https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2015/10/35-years-of-ict/supercharging-singapore/the-1990s.html"
+                }
+            ]
+        },
+        {
+            "date": "2008",
+            "title": "iPhone 3G Launch",
+            "description": "SingTel partners Apple to bring iPhone 3G to Singapore, accelerating the shift to data-centric usage. Around this period, each operator had paid ~S$100M for a 3G licence and committed substantial capex; SingTel alone booked ~S$220M to lift HSPA performance.",
+            "image": "assets/apple.png",
+            "sources": [
+                {
+                    "name": "Apple Singapore Newsroom",
+                    "url": "https://www.apple.com/sg/newsroom/2008/06/09SingTel-and-Apple-to-Bring-iPhone-3G-to-Singapore/"
+                },
+                {
+                    "name": "Singtel — 3G network investment",
+                    "url": "https://www.singtel.com/about-us/news-releases/singtel-invests-s1-billion-3g-network"
+                }
+            ]
+        },
+        {
+            "date": "2012",
+            "title": "4G LTE Revolution",
+            "description": "SingTel launches Singapore’s first 4G service for smartphones (up to 75 Mbps, lower latency). The 4G era rides on the nationwide fibre backbone (NGNBN), which was supported by up to S$1B in government grants (S$750M NetCo + S$250M OpCo).",
+            "image": "assets/4g.png",
+            "sources": [
+                {
+                    "name": "HardwareZone Singapore",
+                    "url": "https://www.hardwarezone.com.sg/mobile/telco/tech-news-singtel-launches-singapores-first-4g-service-smartphones-revises-existing-mobile-plans"
+                },
+                {
+                    "name": "IMDA — NGNBN Grants (≈S$1B)",
+                    "url": "https://www.imda.gov.sg/how-we-can-help/infrastructure-development/next-generation-nationwide-broadband-network"
+                }
+            ]
+        },
+        {
+            "date": "2024",
+            "title": "3G Network Retirement",
+            "description": "On 31 Jul 2024, M1, Singtel and StarHub retire 3G networks, refarming spectrum for 5G. By end-2022, Singapore had already achieved >95% outdoor 5G SA coverage; IMDA supported 5G with S$40M in trials, S$30M for adoption and ~S$70M in R&D.",
+            "image": "assets/3gdiscontinued.png",
+            "sources": [
+                {
+                    "name": "The Straits Times",
+                    "url": "https://www.straitstimes.com/singapore/singtel-starhub-m1-to-retire-3g-services-by-july-2024"
+                },
+                {
+                    "name": "IMDA — Nationwide 5G rollout & funding",
+                    "url": "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2020/singapore-forges-ahead-with-nationwide-5g-rollout"
+                }
+            ]
+        }
+    ],
+    "tech_cards": [
+        {
+            "title": "Dial-Up (1990s)",
+            "speed": "56 Kbps",
+            "width_percent": 1
+        },
+        {
+            "title": "Broadband (2000s)",
+            "speed": "1.5 Mbps",
+            "width_percent": 15
+        },
+        {
+            "title": "3G Mobile (2008)",
+            "speed": "3.7 Mbps",
+            "width_percent": 25
+        },
+        {
+            "title": "4G LTE (2012)",
+            "speed": "75 Mbps",
+            "width_percent": 75
+        },
+        {
+            "title": "5G (2024)",
+            "speed": "1+ Gbps",
+            "width_percent": 100
+        }
+    ],
+    "charts": {
+        "investmentChart": {
+            "labels": [
+                "Singapore ONE",
+                "3G Network",
+                "4G LTE",
+                "5G Infrastructure"
+            ],
+            "data": [
+                200,
+                100,
+                1000,
+                140
+            ],
+            "label": "Investment (Million SGD)",
+            "sources": [
+                {
+                    "text": "Singapore ONE (~S$200M)",
+                    "url": "https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2015/10/35-years-of-ict/supercharging-singapore/the-1990s.html"
+                },
+                {
+                    "text": "IMDA — NGNBN grants (~S$1B total)",
+                    "url": "https://www.imda.gov.sg/how-we-can-help/10g-nbn-grant"
+                },
+                {
+                    "text": "IMDA — 5G support (~S$40M trials + S$30M adoption + ~S$70M R&D)",
+                    "url": "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2020/singapore-forges-ahead-with-nationwide-5g-rollout"
+                }
+            ]
+        },
+        "affordabilityChart": {
+            "labels": [
+                "2015",
+                "2017",
+                "2019",
+                "2021",
+                "2024"
+            ],
+            "data": [
+                0.6,
+                0.4,
+                0.3,
+                0.2,
+                0.16
+            ],
+            "label": "Mobile Basket Cost (% of GNI per capita)",
+            "sources": [
+                {
+                    "text": "ITU — ICT Price Basket dataset",
+                    "url": "https://datahub.itu.int/indicator/mobile-basket-price/"
+                }
+            ]
+        }
+    }
+}
